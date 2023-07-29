@@ -1,0 +1,7 @@
+------------------
+System Information
+------------------
+Operating System: Windows 10 Pro 64-bit
+       Processor: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz (12 CPUs), ~3.7GHz
+          Memory: 16384MB RAM
+       Card name: NVIDIA GeForce GTX 1080 Ti
