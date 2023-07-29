@@ -32,15 +32,3 @@ their information, and they can also inquire about the data collected about
 them by contacting the program's development team.
 
 See [PRIVACY.md](PRIVACY.md) for more information.
-
-
-
-feat: Add core functionality
-
-Added new files PRIVACY.md, README.md, example-dxdiag.txt,
-and main.js to the repository.
-PRIVACY.md contains information about user privacy
-and data usage for the program.
-The program in main.js parses the content of example-dxdiag.txt to extract system information,
-like the operating system, processor, GPU, and RAM usage
-For more details, refer to the individual file descriptions and contents
