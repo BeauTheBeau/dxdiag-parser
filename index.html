@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MWT Diagnostics</title>
+
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+<h1>MWT Diagnostics</h1>
+<p>This is a utility for Military War Tycoon to collect information and help diagnose the cause of performance
+    issues.</p>
+<p>Your files won't leave your computer until you click the <code>Send</code> button, we encourage you to read our
+    <a href="privacy.html">privacy.html</a> before sending.</p>
+
+<div class="accordion" data-open="false">
+    <h3 class="accordion-title">Video Guide</h3>
+    <div class="accordion-details">
+        <p>This video will guide you through the process of collecting the information needed to diagnose the cause of
+            performance issues. It won't show you how to use this utility.</p>
+        <iframe src="https://www.youtube.com/embed/ps_q-Ho5Ej8" title="YouTube video player"
+                class="youtube-embed"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+    </div>
+</div>
+
+<section>
+
+    <h2>Upload your DxDiag.txt</h2>
+    <p>This file contains information about your computer's hardware and software. It will help the developer
+        diagnose the cause of performance issues.</p>
+
+    <div class="accordion" data-open="false">
+        <h3 class="accordion-title">Need help?</h3>
+        <div class="accordion-details">
+            <p>Press <kbd><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/8/87/Windows_logo_-_2021.svg"
+                    alt="Windows 11 logo"></kbd>+<kbd>R</kbd>
+                at the same time. Type <code>dxdiag</code> and press
+                Enter. Click <code>Save All Information...</code> and save the file to your desktop. Then, click
+                <code>Choose File</code> below and select the file you just saved.</p>
+        </div>
+    </div>
+
+    <input type="file" id="file" name="file">
+    <button id="submit" disabled>Parse</button>
+</section>
+
+<section>
+    <h2><label for="output">Output</label></h2>
+    <p>This is the information that you will send.</p>
+    <textarea id="output" rows="8" style="width: 100%; resize: none;" readonly></textarea>
+</section>
+
+<section>
+
+    <h2>Task Manager screenshots</h2>
+    <p>These screenshots will help the developer diagnose the cause of performance issues.</p>
+
+    <section>
+        <h3>Processes tab</h3>
+        <p>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd> at the same time. Click <code>More details</code> if
+            necessary. Click <code>Processes</code> and take a screenshot of the entire window.</p>
+
+        <input type="file" id="processes" name="processes">
+    </section>
+
+    <section>
+
+        <h3>Performance tab</h3>
+        <p>Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Esc</kbd> at the same time. Click <code>More details</code> if
+            necessary. Click <code>Performance</code> and take a screenshot of the entire window.</p>
+
+        <input type="file" id="performance" name="performance">
+    </section>
+
+    <p class="note">Repeat these steps while the game is running.</p>
+
+
+</section>
+
+<section>
+    <h2>Send to developer</h2>
+    <p>Read <a href="privacy.html">privacy.html</a> before sending.</p>
+
+    <input type="checkbox" id="agree" name="agree">
+    <label for="agree">I understand <a href="privacy.html">privacy.html</a>.</label>
+    <button id="send" disabled>Send</button>
+
+    <p id="status"></p>
+</section>
+
+<script>
+
+    /**
+     * @name File Input and Output
+     * @description This script handles file input and output operations. It allows users to select a file,
+     * read its contents, and extract specific fields from it. It then displays the extracted data
+     * in the 'output' element. Additionally, calculating the percentage of included lines
+     * and updates the output accordingly. The 'submit' button is enabled once a file is selected,
+     * and the 'send' button is enabled when the user agrees to send the data and there's output data available.
+     */
+
+
+    const submit = document.getElementById('submit');
+    const file = document.getElementById('file');
+
+    file.addEventListener('change', () => {
+        if (file.files.length > 0) submit.disabled = false;
+    });
+
+    submit.addEventListener('click', () => {
+
+        const acceptedFields = ["Operating System", "Processor", "Memory", "Card name", "Shared Memory",
+            "Dedicated Memory", "Display Memory"];
+
+        const reader = new FileReader();
+        reader.onload = () => {
+            const text = reader.result;
+            const lines = text.split('\n');
+            const output = document.getElementById('output');
+            let includedLines = 0;
+            output.value = '';
+
+            for (let line of lines) {
+                line = line.trim();
+                for (const field of acceptedFields) {
+                    if (line.startsWith(field)) {
+                        output.value += line + '\n';
+                        includedLines++;
+                    }
+                }
+            }
+
+            if (includedLines === 0) output.value = 'No information found. Please try again.';
+
+            const totalLines = text.split('\n').length;
+            const percentage = Math.round(includedLines / totalLines * 100);
+            output.value += `\n${percentage}% of the file was included, or ${includedLines} out of ${totalLines} lines.`;
+
+        };
+
+        reader.readAsText(file.files[0]);
+    });
+
+    const send = document.getElementById('send');
+    const agree = document.getElementById('agree');
+    // const status = document.getElementById('status');
+    const output = document.getElementById('output');
+
+    agree.addEventListener('change', () => {
+        if (agree.checked && output.value.length > 0) send.disabled = false;
+    });
+</script>
+
+<script>
+
+    /**
+     * @name AccordionBehavior
+     * @description This script controls the behavior of the accordion elements on the page.
+     * When the user clicks on an accordion title, it toggles the accordion open and closed states,
+     * adjusting the height of the details element. This creates an accordion effect,
+     * allowing users to show or hide the additional details.
+     */
+
+    const accordions = document.getElementsByClassName('accordion');
+
+    for (const accordion of accordions) {
+        const title = accordion.getElementsByClassName('accordion-title')[0];
+        const details = accordion.getElementsByClassName('accordion-details')[0];
+
+        title.addEventListener('click', () => {
+            if (accordion.dataset.open === 'true') {
+                accordion.dataset.open = 'false';
+                details.style.maxHeight = null;
+            } else {
+                accordion.dataset.open = 'true';
+                details.style.maxHeight = details.scrollHeight + 'px';
+            }
+        });
+    }
+
+
+</script>
+
+</body>
+</html>

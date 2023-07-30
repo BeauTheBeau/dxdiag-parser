@@ -1,7 +1,15 @@
 ------------------
 System Information
 ------------------
-Operating System: Windows 10 Pro 64-bit
-       Processor: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz (12 CPUs), ~3.7GHz
-          Memory: 16384MB RAM
-       Card name: NVIDIA GeForce GTX 1080 Ti
+ Operating System: Windows 10 Pro 64-bit
+        Processor: Intel(R) Core(TM) i7-8700K CPU @ 3.70GHz (12 CPUs), ~3.7GHz
+           Memory: 16384MB RAM
+        Card name: NVIDIA GeForce GTX 1080 Ti
+    Shared Memory: 8129 MB
+ Dedicated Memory: 11126 MB
+   Display Memory: 19393 MB
+
+      Driver Date: 10/27/2017
+   Driver Version: 23.21.13.8813
+  DirectX Version: DirectX 12
+sussy amogus line: 1 2 3 4 5 6 7 8 9 0

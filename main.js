@@ -1,3 +1,5 @@
+// If in a Node.js environment
+
 const fs = require('fs');
 
 /**
