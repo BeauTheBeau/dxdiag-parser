@@ -1,6 +1,3 @@
-
-.map
-
 ### MonoDevelop template
 #User Specific
 *.userprefs
@@ -52,7 +49,6 @@ pip-selfcheck.json
 bin/
 tmp/
 *.tmp
-*.bak
 *.swp
 *~.nib
 local.properties
@@ -183,7 +179,6 @@ octave-workspace
 # *.log
 
 ### MicrosoftOffice template
-*.tmp
 
 # Word temporary
 ~$*.doc*
@@ -397,7 +392,6 @@ arm-p/
 translations/*.qm
 
 # IDE settings
-.settings/
 
 ### Images template
 # JPEG
@@ -466,36 +460,24 @@ translations/*.qm
 
 ### Octave template
 # Windows default autosave extension
-*.asv
 
 # OSX / *nix default autosave extension
-*.m~
 
 # Compiled MEX binaries (all platforms)
-*.mex*
 
 # Packaged app and toolbox files
-*.mlappinstall
-*.mltbx
 
 # Generated helpsearch folders
-helpsearch*/
 
 # Simulink code generation folders
-slprj/
-sccprj/
 
 # Matlab code generation folders
-codegen/
 
 # Simulink autosave extension
-*.autosave
 
 # Simulink cache files
-*.slxc
 
 # Octave session info
-octave-workspace
 
 ### Stata template
 # .gitignore file for git projects containing Stata files
@@ -504,7 +486,6 @@ octave-workspace
 # Stata dataset and output files
 *.dta
 *.gph
-*.log
 *.smcl
 *.stpr
 *.stsem
@@ -524,15 +505,9 @@ octave-workspace
 # *.tif
 
 ### AL template
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 *.code-workspace
 
 # Local History for Visual Studio Code
-.history/
 *.app
 .snapshots/*
 
@@ -576,7 +551,6 @@ octave-workspace
 
 ### Emacs template
 # -*- mode: gitignore; -*-
-*~
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
@@ -653,7 +627,6 @@ flycheck_*.el
 *.twx
 *.unroutes
 *.ut
-*.xpi
 *.xst
 *_bitgen.xwbt
 *_envsettings.html
@@ -753,11 +726,8 @@ xcuserdata/
 project/metals.sbt
 
 ### Backup template
-*.bak
 *.gho
 *.ori
-*.orig
-*.tmp
 
 ### LyX template
 # Ignore LyX backup and autosave files
@@ -785,17 +755,12 @@ ehthumbs_vista.db
 $RECYCLE.BIN/
 
 # Windows Installer files
-*.cab
-*.msi
 *.msix
-*.msm
-*.msp
 
 # Windows shortcuts
 *.lnk
 
 ### FlexBuilder template
-bin/
 bin-debug/
 bin-release/
 
@@ -858,7 +823,6 @@ GitHub.sublime-settings
 # Lazarus backups and unit output folders.
 # These can be changed by user in Lazarus/project options.
 backup/
-*.bak
 lib/
 
 # Application bundle for Mac OS
@@ -873,7 +837,6 @@ config.codekit3
 ### BricxCC template
 # Bricx Command Center IDE
 # http://bricxcc.sourceforge.net
-*.bak
 *.sym
 
 ### Bazaar template
@@ -907,8 +870,6 @@ Export/
 *.cyfit
 *.rpt
 *.svd
-*.log
-*.zip
 
 ### macOS template
 # General
@@ -984,7 +945,6 @@ project/plugins/project/
 **/nbproject/Package-*.bash
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
 
@@ -1002,9 +962,7 @@ tmtags
 *.dat
 *.dbs
 *.psm
-*.bak
 *.cmp
-*.jpg
 *.html
 *.bsf
 
@@ -1033,9 +991,7 @@ Sessionx.vim
 
 # Temporary
 .netrwhist
-*~
 # Auto-generated tag files
-tags
 # Persistent undo
 [._]*.un~
 
@@ -1058,7 +1014,6 @@ cwallet.sso.lck
 ################################################################
 
 # Log files
-*.log
 panic*.log.*
 
 # OpenAccess database lock files
